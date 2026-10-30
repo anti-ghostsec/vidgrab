@@ -1,0 +1,38 @@
+{
+  "manifest_version": 2,
+  "name": "VidGrab",
+  "version": "1.0.0",
+  "description": "Download videos from YouTube, PeerTube, Odysee, Rumble and 1000+ other sites using yt-dlp.",
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "vidgrab@local",
+      "strict_min_version": "115.0"
+    }
+  },
+  "icons": {
+    "48": "icons/icon.svg",
+    "96": "icons/icon.svg"
+  },
+  "permissions": [
+    "nativeMessaging",
+    "storage",
+    "tabs",
+    "contextMenus",
+    "notifications",
+    "downloads",
+    "webRequest",
+    "<all_urls>"
+  ],
+  "background": {
+    "scripts": ["shared.js", "background.js"]
+  },
+  "browser_action": {
+    "default_title": "VidGrab",
+    "default_popup": "popup/popup.html",
+    "default_icon": "icons/icon.svg"
+  },
+  "options_ui": {
+    "page": "options/options.html",
+    "open_in_tab": true
+  }
+}
