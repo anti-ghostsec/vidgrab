@@ -56,6 +56,11 @@ host/vidgrab_host.py  ──►  yt-dlp  ──►  ffmpeg  ──►  ~/Downloa
 
 Download folder, default quality, file name template, playlists, subtitles,
 embedded metadata/thumbnail, SponsorBlock, and extra yt-dlp arguments.
+Extra arguments take download, format, subtitle and file-name options only
+(`--limit-rate`, `-N`, `-f`, `--sub-langs`, …): ones that run programs or
+reach other files (`--exec`, `-o`, `--config-locations`, …) are refused, the
+file name template must stay inside the download folder, and the yt-dlp
+path must name a `yt-dlp` program. `python3 tests/test_host.py` checks this.
 
 **Age-restricted, members-only, or "Sign in to confirm you're not a bot"
 errors** are handled automatically: when a site asks for a login, VidGrab
