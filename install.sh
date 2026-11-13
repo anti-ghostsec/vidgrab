@@ -42,12 +42,11 @@ EOF
 done
 
 if [[ "${1:-}" == "--fetch-ytdlp" ]]; then
-  echo "Downloading yt-dlp from github.com/yt-dlp/yt-dlp…"
-  curl -fL --progress-bar -o "$DATA_DIR/yt-dlp.tmp" \
-    https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp
-  chmod +x "$DATA_DIR/yt-dlp.tmp"
-  mv "$DATA_DIR/yt-dlp.tmp" "$DATA_DIR/yt-dlp"
-  echo "Installed yt-dlp $("$DATA_DIR/yt-dlp" --version) to $DATA_DIR/yt-dlp"
+  # The helper fetches it: it keeps yt-dlp only if the file's hash is in
+  # the release's SHA2-256SUMS and that list carries yt-dlp's signature,
+  # so a swapped or damaged download is never made runnable.
+  echo "Downloading yt-dlp from github.com/yt-dlp/yt-dlp and checking its signature…"
+  python3 -I "$DATA_DIR/vidgrab_host.py" --fetch-ytdlp || exit 1
 fi
 
 echo
